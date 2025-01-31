@@ -203,6 +203,7 @@ Shell prompt. Возможные значения:
       - name: zsh-users/zsh-autosuggestions
       - name: marlonrichert/zsh-autocomplete
       - name: zdharma/fast-syntax-highlighting
+      - name: jeffreytse/zsh-vi-mode
       - name: belak/zsh-utils
         path: completion
       - name: Aloxaf/fzf-tab  # всегда должен быть последним в списке плагинов
