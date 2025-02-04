@@ -77,6 +77,18 @@ fi
 
 echo -ne "\e]12;red\a"
 
+# vi-mode для командой строки
+# ===========================
+
+# Плагин zsh-vi-mode: https://github.com/jeffreytse/zsh-vi-mode
+
+# Чтобы работал fzf-плагин в insert mode
+ZVM_INIT_MODE=sourcing
+
+function zvm_config() {
+  ZVM_LINE_INIT_MODE=$ZVM_MODE_INSERT
+}
+
 # zsh-автодополнение (autosuggestions)
 # ====================================
 
@@ -85,6 +97,13 @@ bindkey '`' forward-word
 
 # Цвет текста для автодополнения (по-умолчанию fg=8)
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=69'
+
+# Менеджер плагинов
+# =================
+if [[ -s ${ZDOTDIR:-~}/.antidote/antidote.zsh ]]; then
+  source ${ZDOTDIR:-~}/.antidote/antidote.zsh
+  antidote load
+fi
 
 # Дополнительные скрипты в ZSHRC_DIR
 # ==================================
@@ -100,10 +119,3 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=69'
 for file in $ZSHRC_DIR/*.zsh(.N); do
   source "$file"
 done
-
-# Менеджер плагинов
-# =================
-if [[ -s ${ZDOTDIR:-~}/.antidote/antidote.zsh ]]; then
-  source ${ZDOTDIR:-~}/.antidote/antidote.zsh
-  antidote load
-fi
